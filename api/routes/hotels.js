@@ -1,6 +1,6 @@
 import express from "express";
 import Hotel from "../models/Hotel.js";
-import { createHotel, deleteHotel, getHotel, getHotels, updateHotel } from "../controllers/hotel.js";
+import { countByCity, countByType, createHotel, deleteHotel, getHotel, getHotels, updateHotel } from "../controllers/hotel.js";
 import { verifyAdmin } from "../utils/verifyToken.js";
 const router = express.Router();
 
@@ -19,11 +19,15 @@ router.delete("/:id", verifyAdmin, deleteHotel);
 // This is the function that deletes the hotel
 
 // GET
-router.get("/:id", getHotel);
+router.get("/find/:id", getHotel);
 // This is the function that gets the hotel
 
 // GET ALL
 router.get("/", getHotels); 
 // This is the function that gets all the hotels
+
+router.get("/countByCity", countByCity); 
+router.get("/countByType", countByType );  
+
 
 export default router;

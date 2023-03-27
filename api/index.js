@@ -6,6 +6,7 @@ import usersRoute from "./routes/users.js"
 import hotelsRoute from "./routes/hotels.js"
 import roomsRoute from "./routes/rooms.js"
 import cookieParser from "cookie-parser"
+import cors from "cors"
 
 const app = express()
 dotenv.config()
@@ -24,6 +25,7 @@ mongoose.connection.on("disconnected", () => {
 }); // This is the function that runs when the database is disconnected
 
 // MIDDLEWARES 
+app.use(cors()); // This is the middleware that allows us to use cors
 app.use(cookieParser()); // This is the middleware that allows us to use cookies
 app.use(express.json()); // This is the middleware that allows us to use json in our requests
 
